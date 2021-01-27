@@ -18,4 +18,12 @@ module.exports = {
     enable: true,
     package: 'egg-static',
   },
+  validate:{
+    enable:true,
+    package:'egg-validate'
+  },
+  mongoose:{
+    enable:true,
+    package:'egg-mongoose'
+  }
 };
