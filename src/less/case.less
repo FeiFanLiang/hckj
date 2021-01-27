@@ -1,0 +1,117 @@
+@import "./common/common.less";
+.case-section {
+    padding: 60px 0;
+    background-color: #F8F9F9;
+    .case-content {
+        display: flex;
+        width: 1200px;
+        margin: 0 auto;
+        padding: 40px 30px;
+        background-color: #fff;
+        .case-img {
+            width: 318px;
+            height: 298px;
+            margin-right: 42px;
+            img {
+                display: block;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .case-info {
+            width: 790px;
+            h5 {
+                font-size: 20px;
+                font-weight: bold;
+                color: #222222;
+                line-height: 24px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #EBECED;
+            }
+            p {
+                padding: 11px 18px;
+                font-size: 16px;
+                line-height: 2;
+            }
+        }
+    }
+    
+}
+
+.case-detail {
+    padding-bottom: 80px;
+    .detail-content {
+        width: 1200px;
+        padding: 0 80px;
+        margin: 0 auto;
+        text-align: center;
+        h5 {
+            font-size: 24px;
+            color: #222222;
+            margin-bottom: 20px;
+        }
+        p {
+            padding: 0 31px;
+            font-size: 16px;
+            line-height: 28px;
+            margin-bottom: 40px;
+        }
+        .detail-list-img {
+            display: flex;
+            &>div {
+                position: relative;
+                width: 378px;
+                height: 283px;
+                &:nth-child(n+2){
+                    margin-left: 32px;
+                }
+                img {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                }
+                span {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    font-size: 16px;
+                    line-height: 50px;
+                    color: #fff;
+                    background-color: rgba(0,1,3,0.58);
+                }
+            }
+        }
+    }
+}
+
+.typical {
+    background-color: #FCFCFC;
+    padding-bottom: 80px;
+    .typical-content {
+        box-sizing: border-box;
+        height: 730px;
+        padding: 54px 47px;
+        background-color: #000;
+        border-radius: 34px;
+        &>div {
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.graph {
+    background-color: #fff;
+    padding-bottom: 80px;
+    .graph-content {
+        width: 1000px;
+        margin: 0 auto;
+        &>div:nth-child(n+2) {
+            margin-top: 40px;
+        }
+    }
+}

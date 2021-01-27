@@ -1,0 +1,195 @@
+@import "./common/common.less";
+
+
+.bus-section {
+  height: 865px;
+  background: url("../static/imgs/buss-bg.jpg") no-repeat;
+  background-size: cover;
+  h3 {
+    color: #222222;
+  }
+  h5 {
+    color: #666666;
+  }
+  .bus-list-box {
+    position: relative;
+    height: 765px;
+    width: 1000px;
+    margin: 0 auto;
+  }
+  p {
+    font-size: 14px;
+    color: #333333;
+  }
+  .bus-item {
+    position: absolute;
+    box-sizing: border-box;
+    width: 300px;
+    height: 345px;
+    padding: 70px 31px 73px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+    &:nth-child(2) {
+      top: 0;
+      left: 350px;
+    }
+    &:nth-child(3) {
+      top: 0;
+      left: 700px;
+    }
+    &:nth-child(4) {
+      top: 300px;
+      left: 172px;
+    }
+    &:nth-child(5) {
+      top: 300px;
+      left: 522px;
+    }
+
+    .bus-icon {
+      height: 70px;
+      width: 70px;
+    }
+    h4 {
+      margin: 8px auto 14px;
+    }
+  }
+}
+
+.item {
+  background: url("../static/imgs/item-bg.png");
+}
+.w-l-w {
+  background: url("../static/imgs/icon_物联网.png");
+  &.active {
+  }
+}
+
+.case-section {
+  height: 625px;
+  background-color: #222222;
+  color: #fff;
+  h3 {
+    color: #fff;
+  }
+  h5 {
+    color: #f7f7f7;
+  }
+  .case-list-box {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    .case-list-item {
+      height: 400px;
+      width: 240px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+    }
+    .case-list-item:nth-child(1) {
+      background-image: url("../static/imgs/zhyq-bg.jpg");
+      .case-icon {
+        background-image: url("../static/imgs/icon_zhyq.png");
+      }
+    }
+    .case-content-wrap {
+      height: 100%;
+      background-color: rgba(11, 79, 217, 0.62);
+      padding-top: 60px;
+      .case-content {
+        .case-icon {
+          width: 60px;
+          height: 60px;
+        }
+        h4 {
+          margin: 29px 0;
+        }
+        p {
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
+
+.news-section {
+  padding-bottom: 80px;
+  .new-list-box {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    .new-list-item {
+      position: relative;
+      width: 374px;
+      border: 1px solid #ebeced;
+      cursor: pointer;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0px 0px 20px 0px rgba(15, 23, 38, 0.16);
+        opacity: 0;
+        transition: opacity ease-in 0.3s;
+      }
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+        h5 {
+          color: #12acfd;
+        }
+      }
+      h5 {
+        text-align: left;
+        margin-bottom: 10px;
+        transition: color ease-in 0.3s;
+      }
+      .border {
+        display: inline-block;
+        font-size: 0;
+        width: 36px;
+        border-bottom: 2px solid #12acfd;
+        margin-bottom: 17px;
+      }
+      .item-img {
+        height: 222px;
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .new-content {
+        padding: 19px 30px 30px;
+        .time {
+          margin-bottom: 19px;
+          font-size: 14px;
+          color: #999999;
+          .clock-icon {
+            width: 16px;
+            height: 16px;
+            background-image: url("../static/imgs/icon_clock.png");
+            vertical-align: middle;
+          }
+          span {
+            display: inline-block;
+            vertical-align: middle;
+          }
+        }
+        .info {
+          font-size: 14px;
+          color: #666666;
+        }
+      }
+    }
+  }
+}

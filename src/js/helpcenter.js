@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 // styles
-import '../less/home.less';
+import '../less/helpcenter.less';
 
 async function welcome() {
   const res = await sayHello();
@@ -20,7 +20,7 @@ welcome();
 
 if (process.env.NODE_ENV === 'development') {
   // 在开发环境下，使用 raw-loader 引入 ejs 模板文件，强制 webpack 将其视为需要热更新的一部分 bundle
-  require('raw-loader!../view/home.ejs');
+  require('raw-loader!../view/helpcenter.ejs');
   if (module.hot) {
     module.hot.accept();
     /**
@@ -41,7 +41,4 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-window.onload = () => {
-  debugger
-  $('.plus').innerHTML = '+++'
-}
+

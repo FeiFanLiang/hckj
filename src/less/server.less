@@ -1,0 +1,43 @@
+@import './common/common.less';
+
+.development {
+    display: flex;
+    flex-wrap: wrap;
+    &>div {
+        display: flex;
+        box-sizing: border-box;
+        width: 380px;
+        height: 120px;
+        align-items: center;
+        margin-right: 30px;
+        background-color: #fff;
+        font-size: 20px;
+    }
+    &>div:nth-child(3n+0){
+        margin-right: 0;
+    }
+    &>div:nth-child(1),&>div:nth-child(4){
+        margin-bottom: 30px;
+    }
+    .net-icon {
+        width: 50px;
+        height: 50px;
+        background-image: url('../static/imgs/net-icon.png');
+    }
+    .icon {
+        margin: 0 31px 0 50px;
+    }
+}
+
+.produce {
+    background: url('../static/imgs/server-bg.jpg') no-repeat;
+    background-size: cover;
+    color: #fff;
+    .produce-content {
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

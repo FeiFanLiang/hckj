@@ -1,0 +1,89 @@
+@import "./common/common.less";
+
+.about-section {
+    padding: 60px 0;
+    .about-content {
+        display: flex;
+        width: 1200px;
+        margin: 0 auto;
+        .about-img {
+            flex-shrink: 0;
+            width: 340px;
+            height: 380px;
+            margin-right: 40px;
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .about-info {
+            h5 {
+                padding: 20px 10px;
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 1;
+                border-bottom: 1px solid #EBECED;
+                text-align: left;
+            }
+            .about-text {
+                padding: 18px 10px 28px;
+                p {
+                    line-height: 32px;
+                    text-indent: 32px;
+                    &:last-child {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+.map-section {
+    padding:  60px 0;
+    background-color: #F8F8F9;
+    .map-content {
+        display: flex;
+        width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        .map-img {
+            flex-shrink: 0;
+            width: 665px;
+            height: 498px;
+            margin-right: 42px;
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .contact-info {
+            padding: 40px 43px 0 0;
+            .contact-title {
+                height: 41px;
+                width: 231px;
+                margin-bottom: 38px;
+                background: url('../static/imgs/aboutus.png') no-repeat;
+                background-size: cover;
+            }
+            .contact-detail {
+                font-size: 16px;
+                color: #333333;
+                line-height: 36px;
+                .address {
+                    span {
+                        display: inline-block;
+                        vertical-align: text-top;
+                    }
+                    &>span:nth-child(1){
+                        width: 80px;
+                    }
+                    &>span:nth-child(2){
+                        width: 356px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+@import "./common/common.less";
+
+.help-section {
+  padding: 40px 0 60px;
+  .help-list-box {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 60px 60px 40px;
+    border: 1px solid #EBECED;
+    .help-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 57px;
+      h5 {
+        font-weight: bold;
+      }
+      input {
+        width: 600px;
+        height: 40px;
+        padding-left: 11px;
+        font-size: 14px;
+        line-height: 40px;
+        border: 1px solid #dcddde;
+        &::placeholder {
+            color: #CACBCC;
+        }
+      }
+      button {
+        padding: 13px 21px;
+        background-color: #12acfd;
+        color: #fff;
+        border-radius: 4px;
+      }
+    }
+    .help-list {
+      margin-bottom: 245px;
+      .list-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 20px;
+          height: 50px;
+          font-size: 16px;
+          color: #333333;
+          .time {
+            color: #999999;
+          }
+          &.active {
+              background-color: #F7F7F7;
+              color: #12ACFD;
+              .time {
+                  color: #12ACFD;
+              }
+          }
+      }
+    }
+    .pagination {
+      text-align: center;
+      font-size: 0;
+      a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #eeeeee;
+        color: #666666;
+        font-size: 14px;
+        &.active {
+          background-color: #12acfd;
+          color: #fff;
+        }
+      }
+      .last-p {
+        margin-left: 6px;
+      }
+      .input {
+        margin: 0 6px;
+      }
+      input {
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #dddddd;
+        padding: 0 8px;
+        width: 40px;
+        font-size: 14px;
+      }
+    }
+  }
+  .help-box {
+    width: 1200px;
+    margin: 0 auto;
+      padding: 60px 40px 60px;
+      border: 1px solid #EBECED;
+    .content {
+        .content-title {
+            position: relative;
+            padding: 20px;
+            border-bottom: 1px solid #EBECED;
+            h5 {
+                width: 923px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #222222;
+                text-align: left;
+            }
+            .time {
+                position: absolute;
+                right: 20px;
+                bottom: 20px;
+                font-size: 14px;
+                color: #999999;
+            }
+        }
+    }
+    .content-info {
+        padding: 40px 20px 0;
+    }
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 80px;
+        a {
+            color: #999999;
+            font-size: 16px;
+        }
+    }
+  }
+}

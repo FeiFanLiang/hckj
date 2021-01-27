@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% include includes/headerNav.ejs %>
+    <section class="header-banner">
+        <img src="../static/imgs/help-banner.jpg" alt="">
+    </section>
+    <section class="help-section">
+        <div class="help-list-box">
+            <div class="help-header">
+                <h5>常见问题</h5>
+                <div class="search">
+                    <input type="text" placeholder="请输入搜索内容">
+                    <button>搜索</button>
+                </div>
+            </div>
+            <ul class="help-list">
+                <li>
+                    <a href="">
+                        <div class="list-item">
+                            <span>软件连接超时解决办法</span>
+                            <span class="time">
+                                2020-01-01
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="list-item">
+                            <span>软件连接超时解决办法</span>
+                            <span class="time">
+                                2020-01-01
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="list-item active">
+                            <span>软件连接超时解决办法</span>
+                            <span class="time">
+                                2020-01-01
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="pagination">
+                <a>
+                    <
+                </a>
+                <a class="active">
+                    1
+                </a>
+                <a>
+                    2
+                </a>
+                <a>
+                    3
+                </a>
+                <a>
+                    >
+                </a>
+                <a class="last-p">
+                    尾页
+                </a>
+                <span class="input">
+                    <input type="text">
+                </span>
+                <a>
+                    GO
+                </a>
+            </div>
+        </div>
+    </section>
+    <% include includes/footer.ejs %>
+</body>
+</html>

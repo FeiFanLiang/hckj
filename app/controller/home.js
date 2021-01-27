@@ -7,6 +7,14 @@ class HomeController extends Controller {
     await render(ctx, 'home.ejs', { title: '首页' });
     // ctx.render('home.ejs', { title: '首页' });
   }
+  async testIndex(){
+    const {ctx} = this;
+    await render(ctx,'index.ejs',{});
+  }
+  async testCase(){
+    const {ctx} = this;
+    await render(ctx,'case.ejs',{});
+  }
 }
 
 module.exports = HomeController;
