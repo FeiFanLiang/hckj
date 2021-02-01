@@ -8,6 +8,14 @@ const CONFIG = require('./config.dev');
 const webpackBaseConfig = require('./webpack.base.config');
 
 module.exports = webpackMerge(webpackBaseConfig, {
+  devServer:{
+    proxy:{
+      '/api':{
+        target:'http://127.0.0.1:7001',
+        changeOrigin:true
+      }
+    }
+  },
   module: {
     rules: [
       {

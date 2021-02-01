@@ -1,5 +1,6 @@
 const mongoosePaginate = require('mongoose-paginate-v2');
 const moment = require('moment');
+const mongooseLeanGetters = require('mongoose-lean-getters');
 module.exports = app => {
     const mongoose = app.mongoose;
     const Schema = mongoose.Schema;
@@ -21,5 +22,6 @@ module.exports = app => {
         }
     })
     fileSchema.plugin(mongoosePaginate);
+    fileSchema.plugin(mongooseLeanGetters);
     return mongoose.model('file',fileSchema);
 }

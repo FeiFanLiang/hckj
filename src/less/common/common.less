@@ -1,12 +1,15 @@
 @import '../../css/reset.css';
 @import "./variables";
 @import "./mixins";
-
+@import '../../css/iconfont.css';
 html, body {
 	width: 100vw;
 	height: 100vh;
 	max-width: 100vw;
 	overflow: auto;
+}
+body {
+	padding-top: 80px;
 }
 p {
 	color: #333333;
@@ -21,6 +24,25 @@ button {
   }
 .icon-clock {
 	background-image: url('../../static/imgs/icon_clock.png');
+}
+.back_top {
+	position: fixed;
+	right: 5%;
+	bottom: 10%;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	line-height:50px;
+	background-color: rgba(3, 10, 26, 0.5);
+	transition: background-color .3s ease;
+	cursor: pointer;
+	display: none;
+	&:hover {
+		background-color: rgba(3, 10, 26, 0.6);
+	}
+	.iconfont {
+		color: #BDBEBF;
+	}
 }
 .common-section {
 	padding: 60px 0 80px;
@@ -40,15 +62,23 @@ button {
 .gray-bg {
 	background-color: #F6F6F7;
 }
-
+.overflowOne {
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
 .common-content {
 	width: 1200px;
 	margin: 0 auto;
   }
 .header-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
 	display: flex;
-	width: 100%;
 	height: 80px;
+	width: 100%;
 	align-items: center;
 	color: #BDBEBF;
 	background-color: #0F1726;
@@ -74,6 +104,36 @@ button {
 				padding: 0 20px;
 				line-height: 80px;
 				color: #BDBEBF;
+				&.active {
+					color: #12ACFD;
+					border-bottom: #12ACFD 2px solid;
+				}
+				.iconDown {
+					display: none;
+				}
+			}
+		}
+	}
+	.header-nav-second {
+		position: absolute;
+		top: 80px;
+		left: 0;
+		display: none;
+		width: 100%;
+		background-color:rgba(15, 23, 38,0.48);
+		.sub-nav-list {
+			display: flex;
+			padding-left:50%;
+			li a {
+				display: block;
+				height: 80px;
+				padding: 0 20px;
+				line-height: 80px;
+				color: #BDBEBF;
+				transition: color .3s ease-in;
+				&:hover {
+					color: #12ACFD;
+				}
 				&.active {
 					color: #12ACFD;
 					border-bottom: #12ACFD 2px solid;

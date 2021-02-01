@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <% include includes/meta.ejs %>
+    <title>新闻详情</title>
+    <script>
+        window.last_id =  '<%%- last_id %>';
+        window.next_id = '<%%- next_id %>';
+        
+        
+    </script>
 </head>
 <body>
     <% include includes/headerNav.ejs %>
@@ -14,31 +21,30 @@
         <div class="news-box">
             <div class="news-tab">
                 <div class="tab-item">
-                    <i class="icon onblur-icon"></i>
-                    <a href="">公司新闻</a>
+                    <i class="icon <%%= newsDetail.type == 1 ? 'onblur-icon':'blur-icon' %>"></i>
+                    <a href="/news?type=1">公司新闻</a>
                 </div>
                 <div class="tab-item">
-                    <i class="icon onblur-icon"></i>
-                    <a href="">行业资讯</a>
+                    <i class="icon <%%= newsDetail.type == 2 ? 'onblur-icon' : 'blur-icon' %>"></i>
+                    <a href="/news?type=2">行业资讯</a>
                 </div>
             </div>
             <div class="content">
-                <h4>公司新闻</h4>
-                <p class="time">时间：2020-01-01</p>
-                <h5>一、简要概述简要概述简要概述简要概述简要概述简要概述</h5>
-                <p>　　简要概述简要概述简要概述简要概述简要概述简要概述，简要概述简要概述简要概述简要概述简要概述，简要概述简要概述简要概述简要概述，简要概述简要概述简要概述，简要概述简要概述简要概述简要概述简要概述简要概述。</p>
-                <p>　　简要概述简要概述简要概述简要概述简要概述简要概述，简要概述简要概述简要概述简要概述简要概述，简要概述简要概述简要概述简要概述，简要概述简要概述简要概述，简要概述简要概述简要概述简要概述简要概述简要概述　　简要概述简要概述简要概述简要概述简要概述简要概述，简要概述简要概述简要概述简要概述简要概述，简要概述简要概述简要概述简要概述，简要概述简要概述简要概述，简要概述简要概述简要概述简要概述简要概述简要概述。</p>
-                <div class="news-img">
-                    <img src="../static/imgs/gongdi.png" alt="">
+                <h4><%%= newsDetail.title %></h4>
+                <p class="time">时间：<%%= newsDetail.time %></p>
+                <div class="news-content">
+                    <%%- newsDetail.content %>
                 </div>
                 <div class="news-footer">
-                    <a href="">
+                    
+                    <a href="" id="news_pre">
                         &lt;上一篇
                     </a>
-                    <a href="">
+                    
+                    <a href="/news?type=<%%=newsDetail.type %>&page=<%%= page %>" id="news_back">
                         返回列表
                     </a>
-                    <a href="">
+                    <a href="" id="news_next">
                         下一篇&gt;
                     </a>
                 </div>

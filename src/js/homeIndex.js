@@ -2,21 +2,10 @@ import axios from 'axios';
 import $ from 'jquery';
 // styles
 import '../less/homeIndex.less';
+import './common.js';
 
-async function welcome() {
-  const res = await sayHello();
-  console.log(res);
-}
 
-function sayHello() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('hello world');
-    }, 2000);
-  });
-}
 
-welcome();
 
 if (process.env.NODE_ENV === 'development') {
   // 在开发环境下，使用 raw-loader 引入 ejs 模板文件，强制 webpack 将其视为需要热更新的一部分 bundle

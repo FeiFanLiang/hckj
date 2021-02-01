@@ -8,54 +8,23 @@ class NewController extends Controller {
       ctx.success('成功',list)
   }
   
-  async addNew(){
-      const {ctx,app} = this;
-      ctx.validate({
-        title:{
-            type:"string"
-        },
-        subTitle:{
-            type:"string"
-        },
-        type:{
-            type:"number"
-        },
-        titlePic:{
-            type:"string"
-        },
-        content:{
-            type:"string"
-        },
-        indexShow:{
-            type:"boolean"
-        }
-      })
-      const {title,subTitle,type,titlePic,content,indexShow} = ctx.request.body;
-      const newFile = app.model.News({title,subTitle,type,titlePic,content,indexShow});
-      await newFile.save();
-      ctx.success('添加成功',{
-          id:newFile.id,
-          title,
-          subTitle,
-          type,
-          titlePic,
-          content,
-          indexShow,
-          time:newFile.time
-      })
-  }
+ 
+  
 
   async updateNew(){
       const {app,ctx} = this;
       ctx.validate({
         id:{
-            type:'string'
+            type:'string',
+            allowEmpty:true
         },
         title:{
-            type:"string"
+            type:"string",
+            max:50
         },
         subTitle:{
-            type:'string'
+            type:'string',
+            max:300
         },
         type:{
             type:'number'
@@ -64,24 +33,41 @@ class NewController extends Controller {
             type:'string'
         },
         content:{
-            type:'string'
+            type:'string',
+            allowEmpty:true
         },
         indexShow:{
             type:"boolean"
         }
       })
       const {id,title,subTitle,type,titlePic,content,indexShow} = ctx.request.body;
-      await app.model.News.updateOne({
-          _id:app.__mongoose.Types.ObjectId(id)
-      },{
-          title,
-          subTitle,
-          type,
-          titlePic,
-          content,
-          indexShow
-      });
-      ctx.success('更新成功')
+      if(id){
+        await app.model.News.updateOne({
+            _id:app.__mongoose.Types.ObjectId(id)
+        },{
+            title,
+            subTitle,
+            type,
+            titlePic,
+            content,
+            indexShow
+        });
+        ctx.success('更新成功')
+      }else {
+        const newFile = app.model.News({title,subTitle,type,titlePic,content,indexShow});
+        await newFile.save();
+        ctx.success('添加成功',{
+            id:newFile.id,
+            title,
+            subTitle,
+            type,
+            titlePic,
+            content,
+            indexShow,
+            time:newFile.time
+        })
+      }
+      
   }
 
   async deleteNew(){

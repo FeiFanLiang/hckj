@@ -8,7 +8,7 @@ class NewsService extends Service {
             page:currentPage,
             lean:{getters:true},
             leanWidthId:true,
-            select:'-_id -__v',
+            select:'-__v',
             sort:{
               time:-1
             }

@@ -3,10 +3,25 @@
 .help-section {
   padding: 40px 0 60px;
   .help-list-box {
+    position: relative;
     width: 1200px;
     margin: 0 auto;
     padding: 60px 60px 40px;
     border: 1px solid #EBECED;
+    .no-msg {
+      position: absolute;
+      display: none;
+      top: 230px;
+      left: 500px;
+      width: 160px;
+      height: 50px;
+      background-color: rgba(15,23,38,0.73);
+      color: #FFFFFF;
+      font-size: 14px;
+      text-align: center;
+      line-height:50px;
+      border-radius: 4px;
+    }
     .help-header {
       display: flex;
       justify-content: space-between;
@@ -34,7 +49,7 @@
       }
     }
     .help-list {
-      margin-bottom: 245px;
+      min-height: 600px;
       .list-item {
           display: flex;
           justify-content: space-between;
@@ -43,16 +58,22 @@
           height: 50px;
           font-size: 16px;
           color: #333333;
+          transition: all .3s ease;
+          .overflowOne {
+            width: 940px;
+          }
           .time {
             color: #999999;
+            transition: all .3s ease;
           }
-          &.active {
-              background-color: #F7F7F7;
+          &:hover {
+            background-color: #F7F7F7;
               color: #12ACFD;
               .time {
                   color: #12ACFD;
               }
           }
+          
       }
     }
     .pagination {
@@ -91,7 +112,7 @@
   .help-box {
     width: 1200px;
     margin: 0 auto;
-      padding: 60px 40px 60px;
+      padding: 40px 40px 60px;
       border: 1px solid #EBECED;
     .content {
         .content-title {
@@ -115,6 +136,8 @@
         }
     }
     .content-info {
+        box-sizing: border-box;
+        min-height: 600px;
         padding: 40px 20px 0;
     }
     .footer {
@@ -124,6 +147,10 @@
         a {
             color: #999999;
             font-size: 16px;
+            transition:  color .3s ease;
+            &:hover {
+              color: #333333;
+            }
         }
     }
   }

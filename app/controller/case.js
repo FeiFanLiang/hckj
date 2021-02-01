@@ -11,7 +11,7 @@ class CaseController extends Controller {
         page: currentPage,
         lean: true,
         leanWidthId: true,
-        select: "-_id -__v",
+        select: "-__v",
         sort: {
           time: -1,
         },
@@ -20,102 +20,40 @@ class CaseController extends Controller {
     ctx.success("查询成功", list);
   }
 
-  async addCase() {
-    const { ctx, app } = this;
-    ctx.validate({
-      title: {
-        type: "string",
-      },
-      titlePic: {
-        type: "string",
-      },
-      subTitle: {
-        type: "string",
-      },
-      paragraphTitle_1: {
-        type: "string",
-      },
-      paragraphContent_1: {
-        type: "string",
-      },
-      paragraphImg_1: {
-        type: "string",
-      },
-      paragraphTitle_2: {
-        type: "string",
-      },
-      paragraphContent_2: {
-        type: "string",
-      },
-      img_1: {
-        type: "array",
-        min: 1,
-      },
-      img_2: {
-        type: "array",
-        min: 1,
-      },
-    });
-    const {
-      title,
-      titlePic,
-      subTitle,
-      paragraphTitle_1,
-      paragraphContent_1,
-      paragraphImg_1,
-      paragraphTitle_2,
-      paragraphContent_2,
-      img_1,
-      img_2,
-    } = ctx.request.body;
-    const newCase = app.model.Case({
-      title,
-      titlePic,
-      subTitle,
-      paragraphTitle_1,
-      paragraphContent_1,
-      paragraphImg_1,
-      paragraphTitle_2,
-      paragraphContent_2,
-      img_1,
-      img_2,
-    });
-    await newCase.save();
-    ctx.success("添加成功", {
-      id: newCase.id,
-      title,
-      titlePic,
-      subTitle,
-      paragraphTitle_1,
-      paragraphContent_1,
-      paragraphImg_1,
-      paragraphTitle_2,
-      paragraphContent_2,
-      img_1,
-      img_2,
-    });
-  }
-
+ 
   async updateCase() {
     const { ctx, app } = this;
     ctx.validate({
       id: {
         type: "string",
+        allowEmpty:true
       },
       title: {
         type: "string",
+        max:20
       },
       titlePic: {
         type: "string",
       },
+      navTitle:{
+        type:"string",
+        max:10
+      },
       subTitle: {
         type: "string",
+        max:50
+      },
+      indexIcon:{
+        type:'string'
       },
       paragraphTitle_1: {
         type: "string",
+        max:100
       },
       paragraphContent_1: {
         type: "string",
+        allowEmpty:true,
+        max:500
       },
       paragraphImg_1: {
         type: "string",
@@ -125,20 +63,43 @@ class CaseController extends Controller {
       },
       paragraphContent_2: {
         type: "string",
+        allowEmpty:true,
+        max:500
       },
       img_1: {
-        type: "array",
-        min: 1,
+        type: "string"
       },
       img_2: {
         type: "array",
         min: 1,
       },
+      paragraphContent2Img_1:{
+        type:"string"
+      },
+      paragraphContent2ImgTitle_1:{
+        type:'string',
+        max:50
+      },
+      paragraphContent2Img_2:{
+        type:'string'
+      },
+      paragraphContent2ImgTitle_2:{
+        type:"string",
+        max:50
+      },
+      paragraphContent2Img_3:{
+        type:'string'
+      },
+      paragraphContent2ImgTitle_3:{
+        type:"string",
+        max:50
+      }
     });
     const {
       title,
       titlePic,
       subTitle,
+      navTitle,
       paragraphTitle_1,
       paragraphContent_1,
       paragraphImg_1,
@@ -146,15 +107,50 @@ class CaseController extends Controller {
       paragraphContent_2,
       img_1,
       img_2,
+      indexIcon,
       id,
     } = ctx.request.body;
-    await app.model.Case.updateOne(
-      {
-        _id: app.__mongoose.Types.ObjectId(id),
-      },
-      {
+    if(id){
+      await app.model.Case.updateOne(
+        {
+          _id: app.__mongoose.Types.ObjectId(id),
+        },
+        {
+          title,
+          titlePic,
+          navTitle,
+          subTitle,
+          paragraphTitle_1,
+          paragraphContent_1,
+          paragraphImg_1,
+          paragraphTitle_2,
+          paragraphContent_2,
+          img_1,
+          img_2,
+          indexIcon
+        }
+      );
+      ctx.success("更新成功");
+    }else {
+      const newCase = app.model.Case({
         title,
         titlePic,
+        subTitle,
+        navTitle,
+        paragraphTitle_1,
+        paragraphContent_1,
+        paragraphImg_1,
+        paragraphTitle_2,
+        paragraphContent_2,
+        img_1,
+        img_2,
+      });
+      await newCase.save();
+      ctx.success("添加成功", {
+        id: newCase.id,
+        title,
+        titlePic,
+        navTitle,
         subTitle,
         paragraphTitle_1,
         paragraphContent_1,
@@ -163,9 +159,10 @@ class CaseController extends Controller {
         paragraphContent_2,
         img_1,
         img_2,
-      }
-    );
-    ctx.success("更新成功");
+        indexIcon
+      });
+    }
+    
   }
 
   async deleteCase() {

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <% include includes/meta.ejs %>
+    <title>帮助中心</title>
 </head>
 <body>
     <% include includes/headerNav.ejs %>
@@ -15,67 +16,53 @@
             <div class="help-header">
                 <h5>常见问题</h5>
                 <div class="search">
-                    <input type="text" placeholder="请输入搜索内容">
-                    <button>搜索</button>
+                    <input type="text" id="search" maxlength="20" placeholder="请输入搜索内容" value="<%%= query %>">
+                    <button id="search_btn">搜索</button>
                 </div>
             </div>
+            <div class="no-msg">
+                没有搜索到相关内容
+            </div>
             <ul class="help-list">
+                <%% for(var i=0,l=helpList.length;i<l;i++) { %>
                 <li>
-                    <a href="">
+                    <a href="/help/<%%= helpList[i]._id %>">
                         <div class="list-item">
-                            <span>软件连接超时解决办法</span>
+                            <span class="overflowOne"><%%= helpList[i].title %></span>
                             <span class="time">
-                                2020-01-01
+                                <%%= helpList[i].time %>
                             </span>
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a href="">
-                        <div class="list-item">
-                            <span>软件连接超时解决办法</span>
-                            <span class="time">
-                                2020-01-01
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <div class="list-item active">
-                            <span>软件连接超时解决办法</span>
-                            <span class="time">
-                                2020-01-01
-                            </span>
-                        </div>
-                    </a>
-                </li>
+                <%% } %>
+                
+               
             </ul>
             <div class="pagination">
-                <a>
-                    <
-                </a>
-                <a class="active">
-                    1
-                </a>
-                <a>
-                    2
-                </a>
-                <a>
-                    3
-                </a>
-                <a>
-                    >
-                </a>
-                <a class="last-p">
-                    尾页
-                </a>
-                <span class="input">
-                    <input type="text">
-                </span>
-                <a>
-                    GO
-                </a>
+                <%% if(hasPrevPage){ %>
+                    <a href="/help?query=<%%= query %>&page=<%%= page-1 %>">
+                        <
+                    </a>
+                    <%% } %>
+                    <%% for(var i=0,l=pageArray.length;i<l;i++){ %%>
+                        <a href="<%%= pageArray[i].href %>" class="<%%= pageArray[i].active %>"><%%=pageArray[i].number %></a>
+                    <%% } %%>
+                    <%% if(hasNextPage){ %>
+                    <a href="/help?query=<%%= query %>&page=<%%= page+1 %>">
+                        >
+                    </a>
+                    <a class="last-p" href="/help?query=<%%=query%>&page=<%%= pagingCounter %>">
+                        尾页
+                    </a>
+                    <%% } %>
+                   
+                    <span class="input">
+                        <input type="text" id="helpInput">
+                    </span>
+                    <a id="helpGo">
+                        GO
+                    </a>
             </div>
         </div>
     </section>

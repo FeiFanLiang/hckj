@@ -5,16 +5,39 @@ module.exports = (app) => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
   const caseSchema = new Schema({
-    title: { type: String },
+    title: { type: String,maxLength:20 },
     titlePic: { type: String },
-    subTitle: { type: String },
-    paragraphTitle_1: { type: String },
-    paragraphContent_1: { type: String },
+    indexIcon:{type:String},
+    navTitle:{type:String,maxLength:10},
+    subTitle: { type: String,maxLength:50},
+    paragraphTitle_1: { type: String,maxLength:100},
+    paragraphContent_1: { type: String,maxLength:500 },
     paragraphImg_1: { type: String },
-    paragraphTitle_2: { type: String },
-    paragraphContent_2: { type: String },
-    img_1: { type: Array },
-    img_2: { type: Array },
+    paragraphTitle_2: { type: String,maxLength:100 },
+    paragraphContent_2: { type: String,maxLength:500},
+    img_1: { type:String },
+    img_2: { type: Array,maxLength:2 },
+    paragraphContent2Img_1:{
+      type:String
+    },
+    paragraphContent2ImgTitle_1:{
+      type:String,
+      maxLength:50
+    },
+    paragraphContent2Img_2:{
+      type:String
+    },
+    paragraphContent2ImgTitle_2:{
+      type:String,
+      maxLength:50
+    },
+    paragraphContent2Img_3:{
+      type:String
+    },
+    paragraphContent2ImgTitle_3:{
+      type:String,
+      maxLength:50
+    },
     time: {
       type: Date,
       default: Date.now,

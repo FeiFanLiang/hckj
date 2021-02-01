@@ -33,10 +33,14 @@ class FileController extends Controller {
       password
     })
     if(user){
-      ctx.session.userInfo = {
-        username:username
-      }
-      ctx.success('登录成功')
+      const token = app.jwt.sign({
+        name:user.name
+      },app.config.jwt.secret,{
+        expiresIn:'72h'
+      });
+      ctx.success('登录成功',{token})
+    }else {
+      ctx.error('密码错误')
     }
   }
   async updatePassword(){

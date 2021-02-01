@@ -11,7 +11,7 @@ class HelpsController extends Controller {
         page: currentPage,
         lean: {getters:true},
         leanWidthId: true,
-        select: "-_id -__v",
+        select: "-__v",
         sort: {
           time: -1,
         },
@@ -23,15 +23,12 @@ class HelpsController extends Controller {
   async queryList() {
     const { ctx, app } = this;
     ctx.validate({
-      currentPage: {
-        type: "number",
-      },
       query: {
         type: "string",
         max: 20,
       },
-    });
-    const { currentPage = 1, query = '' } = ctx.request.body;
+    },ctx.query);
+    const { currentPage = 1, query = '' } = ctx.query;
     const reg = new RegExp(query, "i");
     const list = await app.model.Helps.paginate(
       {
@@ -49,7 +46,7 @@ class HelpsController extends Controller {
         page: currentPage,
         lean: {getters:true},
         leanWidthId: true,
-        select: "-_id -__v -content",
+        select: "-__v -content",
         sort: {
           time: -1
         },
@@ -58,51 +55,48 @@ class HelpsController extends Controller {
     ctx.success("查询成功", list);
   }
 
-  async addHelp() {
-    const { ctx, app } = this;
-    ctx.validate({
-      title: {
-        type: "string",
-      },
-      content: {
-        type: "string",
-      },
-    });
-    const { title, content } = ctx.request.body;
-    const newHelp = app.model.Helps({ title, content });
-    await newHelp.save();
-    ctx.success("添加成功", {
-      id: newHelp.id,
-      title,
-      content,
-      time:newHelp.time
-    });
-  }
+  
+
 
   async updateHelp() {
     const { ctx, app } = this;
     ctx.validate({
       id: {
         type: "string",
+        allowEmpty:true
       },
       title: {
         type: "string",
+        max:100
       },
       content: {
         type: "string",
+        allowEmpty:true
       },
     });
     const { title, content, id } = ctx.request.body;
-    await app.model.Helps.updateOne(
-      {
-        _id: app.__mongoose.Types.ObjectId(id),
-      },
-      {
+    if(id){
+      await app.model.Helps.updateOne(
+        {
+          _id: app.__mongoose.Types.ObjectId(id),
+        },
+        {
+          title,
+          content,
+        }
+      );
+      ctx.success("更新成功");
+    }else {
+      const newHelp = app.model.Helps({ title, content });
+      await newHelp.save();
+      ctx.success("添加成功", {
+        id: newHelp.id,
         title,
         content,
-      }
-    );
-    ctx.success("更新成功");
+        time:newHelp.time
+      });
+    }
+    
   }
 
   async deleteHelp() {

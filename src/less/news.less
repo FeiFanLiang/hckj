@@ -15,11 +15,18 @@
     .tab-item {
       display: flex;
       align-items: center;
+      
+      &:hover {
+        a {
+          color: #12acfd;
+        }
+      }
       &:nth-child(1) {
         margin-right: 40px;
       }
       a {
         line-height: 16px;
+        transition: color .3s ease;
       }
     }
     .icon {
@@ -30,11 +37,15 @@
     .onblur-icon {
       background-image: url("../static/imgs/icon-onblur.png");
     }
+    .blur-icon {
+      background-image: url("../static/imgs/icon-blur.png");
+    }
   }
   .news-list-box {
     padding: 42px 32px;
     border: 1px solid #ebeced;
     .news-list {
+      min-height: 600px;
       margin-bottom: 40px;
     }
     li {
@@ -43,6 +54,14 @@
     .news-item-box {
       display: flex;
       text-align: left;
+      cursor: pointer;
+      &:hover {
+        .news-info {
+          h5 {
+            color: #12acfd;
+          }
+        }
+      }
       .news-img {
         width: 184px;
         height: 138px;
@@ -55,11 +74,13 @@
         padding: 10px 0 31px;
         border-bottom: 1px solid #ebeced;
         h5 {
+          max-width:920px;
           font-size: 20px;
           line-height: 1;
           color: #222222;
           text-align: left;
           margin-bottom: 20px;
+          transition: color .3s ease;
         }
         p {
           color: #666666;
@@ -117,7 +138,6 @@
   }
   .content {
     padding: 60px 60px 40px;
-
     border: 1px solid #ebeced;
     h4 {
       font-size: 24px;
@@ -147,14 +167,8 @@
     p + p {
       margin-top: 30px;
     }
-    .news-img {
-        margin-top: 40px;
-        text-align: center;
-        img {
-            display: inline-block;
-            width: 500px;
-            height: 334px;
-        }
+    .news-content {
+      min-height: 600px;
     }
     .news-footer {
         display: flex;
@@ -163,6 +177,10 @@
         a {
             color: #999999;
             font-size: 16px;
+            transition: color .3s ease;
+            &:hover {
+              color: #333333;
+            }
         }
 
     }

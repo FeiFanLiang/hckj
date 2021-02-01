@@ -1,22 +1,10 @@
 import axios from 'axios';
 import $ from 'jquery';
+import './common.js';
 // styles
 import '../less/helpcenter.less';
 
-async function welcome() {
-  const res = await sayHello();
-  console.log(res);
-}
 
-function sayHello() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('hello world');
-    }, 2000);
-  });
-}
-
-welcome();
 
 if (process.env.NODE_ENV === 'development') {
   // 在开发环境下，使用 raw-loader 引入 ejs 模板文件，强制 webpack 将其视为需要热更新的一部分 bundle
@@ -40,5 +28,19 @@ if (process.env.NODE_ENV === 'development') {
     });
   }
 }
+
+$(document).ready(function(){
+  if(last_id){
+    $('#news_pre').attr('href',`/help/${last_id}`)
+  }else {
+    $('#news_pre').css('visibility','hidden')
+  }
+  if(next_id){
+    $('#news_next').attr('href',`/help/${next_id}`)
+  }else {
+    $('#news_next').css('visibility','hidden')
+  }
+})
+
 
 

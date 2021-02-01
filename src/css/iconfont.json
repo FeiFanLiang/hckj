@@ -1,0 +1,23 @@
+{
+  "id": "2345105",
+  "name": "汉成官网",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "19491632",
+      "name": "Down",
+      "font_class": "Down",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "19491640",
+      "name": "shangla1",
+      "font_class": "shangla1",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    }
+  ]
+}

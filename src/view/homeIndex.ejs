@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <% include includes/meta.ejs %>
+    <title>汉成科技</title>
     <% include ./includes/link.ejs %>
 </head>
 
 <body>
     <% include includes/headerNav.ejs %>
+    <% include includes/backTop.ejs %>
         <section class="header-banner">
             <img src="../static/imgs/banner.jpg" alt="header banner">
         </section>
@@ -22,38 +24,38 @@
             </h5>
             <div class="bus-list-box">
                 <div class="bus-item item">
-                    <i class="bus-icon w-l-w"></i>
+                    <i class="bus-icon icon"></i>
                     <h4>物联网</h4>
                     <p>
                         对移动端、远程设备、RFID等智能硬件进行统一管理，提升智能化水平，为商业连锁、物流、生产加工等传统劳动力密集型行业提升效率，降低成本
                     </p>
                 </div>
                 <div class="bus-item item">
-                    <i class="icon bus-icon w-l-w"></i>
-                    <h4>物联网</h4>
+                    <i class="icon bus-icon"></i>
+                    <h4>安防系统</h4>
                     <p>
-                        对移动端、远程设备、RFID等智能硬件进行统一管理，提升智能化水平，为商业连锁、物流、生产加工等传统劳动力密集型行业提升效率，降低成本
+                        视频、门禁、报警、出入口 ... 集成化的安防管理系统，突破信息孤岛、协同管理高效联动
                     </p>
                 </div>
                 <div class="bus-item item">
-                    <i class="icon bus-icon w-l-w"></i>
-                    <h4>物联网</h4>
+                    <i class="icon bus-icon z-n-x-t"></i>
+                    <h4>智能系统</h4>
                     <p>
-                        对移动端、远程设备、RFID等智能硬件进行统一管理，提升智能化水平，为商业连锁、物流、生产加工等传统劳动力密集型行业提升效率，降低成本
+                        为深度学习、机器学习等人工智能算法提供高水准落地应用管理平台，可为用户量身定制
                     </p>
                 </div>
                 <div class="bus-item item">
-                    <i class="icon bus-icon w-l-w"></i>
-                    <h4>物联网</h4>
+                    <i class="icon bus-icon"></i>
+                    <h4>管理系统</h4>
                     <p>
-                        对移动端、远程设备、RFID等智能硬件进行统一管理，提升智能化水平，为商业连锁、物流、生产加工等传统劳动力密集型行业提升效率，降低成本
+                        根据用户的要求，对需求进行定制化，以达到想要的效果，获得管理效率的提升
                     </p>
                 </div>
                 <div class="bus-item item">
-                    <i class="icon bus-icon w-l-w"></i>
-                    <h4>物联网</h4>
+                    <i class="icon bus-icon"></i>
+                    <h4>互联网+</h4>
                     <p>
-                        对移动端、远程设备、RFID等智能硬件进行统一管理，提升智能化水平，为商业连锁、物流、生产加工等传统劳动力密集型行业提升效率，降低成本
+                        行业和互联网相结合，利用互联网互通性对行业进行升级改造，推动行业提升效率发挥更大价值
                     </p>
                 </div>
             </div>
@@ -66,31 +68,20 @@
                 TYPICAL CASE
             </h5>
             <ul class="case-list-box">
-                <li class="case-list-item">
-                    <div class="case-content-wrap">
-                    <div class="case-content">
-                        <i class="icon case-icon"></i>
-                        <h4>智慧园区</h4>
-                        <p>
-                            安全管理
-                        </p>
-                        <p>
-                            智能环境
-                        </p>
-                        <p>
-                            智能停车
-                        </p>
-                        <p>
-                            智慧楼宇
-                        </p>
-                        <p>
-                            智慧办公
-                        </p>
-                    </div>
-                       
-                    </div>
+                <%% for(var i=0,l=casesList.length;i<l;i++){ %>
+                <li class="case-list-item" style="background-image: url('<%%= casesList[i].titlePic %>');" >
+                    <a href="/case/<%%= casesList[i]._id %>" target="__blank">
+                        <div class="case-content-wrap">
+                            <div class="case-content">
+                                <i class="icon" style="background-image: url('<%%= casesList[i].indexIcon %>');" ></i>
+                                <h4 class="overflowOne"><%%= casesList[i].title %></h4>
+                                <p class="clampLine_6"><%%= casesList[i].subTitle %></p>
+                            </div>  
+                            </div>
+                    </a>
                 </li>
-            </li>
+                <%% } %>
+            </ul>
         </section>
         <section class="news-section common-section">
             <h3>
@@ -100,22 +91,26 @@
                 NEWS INFORMATION
             </h5>
             <div class="new-list-box">
+                <%% for(var i=0,l=newsList.length;i<l;i++){ %>
+                <a target="__blank" href="/news/<%%= newsList[i]._id %>" >
                 <div class="new-list-item">
                     <div class="item-img">
-                        <img src="../static/imgs/new.jpg" alt="">
+                        <img src="<%%= newsList[i].titlePic %>" alt="汉成科技新闻图片">
                     </div>
                     <div class="new-content">
-                        <h5>公司洽谈合作</h5>
+                        <h5 class="overflowOne"><%%= newsList[i].title %></h5>
                         <i class="border"></i>
                         <p class="time">
                             <i class="icon clock-icon"></i>
-                            <span>2020-01-01</span>
+                            <span><%%= newsList[i].time %></span>
                         </p>
-                        <p class="info">
-                            公司新闻公司新闻公司新闻公司新闻，公司新闻公司新闻，公司新闻公司新闻公司新闻公司新闻公。
+                        <p class="info clamp_3">
+                            <%%= newsList[i].subTitle %>
                         </p>
                     </div>
                 </div>
+            </a>
+                <%% } %>
             </div>
         </section>
         <% include includes/footer.ejs %>

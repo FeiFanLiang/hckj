@@ -1,46 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <% include includes/meta.ejs %>
+    <title><%%= caseDetail.navTitle %></title>
 </head>
 <body>
     <% include includes/headerNav.ejs %>
     <section class="header-banner">
-        <img src="../static/imgs/case-banner.jpg" alt="">
+        <img src="../static/imgs/case-banner.jpg" alt="汉成科技典型案例图片展示">
     </section>
     <section class="case-section">
         <div class="case-content">
             <div class="case-img">
-                <img src="../static/imgs/case-z.jpg" alt="">
+                <img src="<%%= caseDetail.paragraphImg_1 %>" alt="汉成科技典型案例内容图片展示">
             </div>
             <div class="case-info">
-                <h5>智慧园区管理平台介绍</h5>
-                <p>
-                    　　园区智能化综合管理平台平台是以内部宽带局域网为基础，以数字网络化视频监控技术为核心，以视频系统、报警系统、访客系统、人车通行系统、广播系统、巡更巡查系统、消防系统、环境动力通、信息发布系统、人流车流统计、智能分析系统、运维诊断等多种只智能子系统为基础，结合具体业务需要，在二维/三维数字模型上对各类子系统全面集成与统一管理的一套安全防范管理系统。 　　系统对“大量视频的多个终端网络调用”、“各种不同级别报警事件的分权限处理”、“不同区域的安全管理”、“电子地图分屏显示”、“子系统间的互联互通、资源共享”、“巡更巡检管理”等细节都做了专门的设计，并且所有功能模块由一个综合管理系统管理，体现了“一体化”、“智能化”设计思想。
-                </p>
+                <h5><%%= caseDetail.paragraphTitle_1 %></h5>
+                <p><%%= caseDetail.paragraphContent_1 %></p>
             </div>
         </div>
     </section>
     <section class="case-detail common-section">
         <div class="detail-content">
-            <h5>实现目标</h5>
-            <p>
-                解决设备管理落后，用户体验差等问题，实现园区出入口、园区内的公共广播系统、人员车辆、设备间、机房、中控室等重点位置的环境监测等安防的综合管理。 解决设备管理落后，用户体验差等问题，实现园区出入口、园区内的公共广播系统、人员车辆、设备间、机房、中控室等重点位置的环境监测等安防的综合管理。
-            </p>
+            <h5><%%= caseDetail.paragraphTitle_2 %></h5>
+            <p><%%= caseDetail.paragraphContent_2 %></p>
             <div class="detail-list-img">
                 <div class="list-img">
-                    <img src="../static/imgs/inner-1.jpg" alt="">
-                    <span>园区出入口</span>
+                    <img src="<%%= caseDetail.paragraphContent2Img_1 %>" alt="汉成科技典型案例列表">
+                    <span class="overflowOne"><%%= caseDetail.paragraphContent2ImgTitle_1 %></span>
                 </div>
                 <div class="list-img">
-                    <img src="../static/imgs/inner-1.jpg" alt="">
-                    <span>园区出入口</span>
+                    <img src="<%%= caseDetail.paragraphContent2Img_2 %>" alt="汉成科技典型案例列表">
+                    <span class="overflowOne"><%%= caseDetail.paragraphContent2ImgTitle_2 %></span>
                 </div>
                 <div class="list-img">
-                    <img src="../static/imgs/inner-1.jpg" alt="">
-                    <span>园区出入口</span>
+                    <img src="<%%= caseDetail.paragraphContent2Img_3 %>" alt="汉成科技典型案例列表">
+                    <span class="overflowOne"><%%= caseDetail.paragraphContent2ImgTitle_3 %></span>
                 </div>
             </div>
         </div>
@@ -56,7 +53,7 @@
         </h5>
         <div class="common-content typical-content">
             <div>
-                <img src="../static/imgs/afjk.jpg" alt="">
+                <img src="<%%= caseDetail.img_1 %>" alt="汉成科技典型案例大图">
             </div>
         </div>
     </section>
@@ -68,12 +65,11 @@
             TOPOLOGICAL GRAPH
         </h5>
         <div class="graph-content">
+            <%% for(var i=0,l=caseDetail.img_2.length;i<l;i++){ %>
             <div class="graph-item">
-                <img src="../static/imgs/graph-1.jpg" alt="">
+                <img src="<%%= caseDetail.img_2[i] %>" alt="汉成科技案例拓扑图">
             </div>
-            <div class="graph-item">
-                <img src="../static/imgs/graph-1.jpg" alt="">
-            </div>
+            <%% } %>
         </div>
     </section>
     <% include includes/footer.ejs %>

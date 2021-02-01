@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{36:function(o,n,e){"use strict";e.r(n);e(2),e(0),e(70);!async function(){const o=await new Promise((o,n)=>{setTimeout(()=>{o("hello world")},2e3)});console.log(o)}()},70:function(o,n){}},[[36,0,1]]]);
+//# sourceMappingURL=news.f2d10877bf470ecdb87f.js.map
