@@ -9,9 +9,13 @@ module.exports = (app) => {
     titlePic: { type: String },
     indexIcon:{type:String},
     navTitle:{type:String,maxLength:10},
-    subTitle: { type: String,maxLength:50},
+    indexShow:{
+      type:Boolean,
+      default:false
+    },
+    subTitle: { type: String},
     paragraphTitle_1: { type: String,maxLength:100},
-    paragraphContent_1: { type: String,maxLength:500 },
+    paragraphContent_1: { type: String },
     paragraphImg_1: { type: String },
     paragraphTitle_2: { type: String,maxLength:100 },
     paragraphContent_2: { type: String,maxLength:500},

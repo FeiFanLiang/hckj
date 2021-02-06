@@ -41,12 +41,22 @@ module.exports = {
       less: resolve(__dirname, '../src/less'),
     },
   },
-
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        use: [{
+          loader:'babel-loader',
+          options:{
+            presets: [
+                ['babel-preset-env', {
+                    targets: {
+                        browser: ['> 1%','last 2 versions']
+                    }
+                }]
+            ],
+          }
+        }],
         exclude: /(node_modules|lib|libs)/,
       },
       {

@@ -37,5 +37,5 @@ module.exports = app => {
   router.post('/api/updateHelp',jwt,controller.help.updateHelp);
   router.delete('/api/deleteHelp/:id',jwt,controller.help.deleteHelp);
   router.get('/api/searchHelp',controller.help.queryList)
-  router.get('*',controller.frontEnd.notFound);
+  //router.get('*',controller.frontEnd.notFound);
 };

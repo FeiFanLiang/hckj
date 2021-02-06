@@ -68,14 +68,14 @@
                 TYPICAL CASE
             </h5>
             <ul class="case-list-box">
-                <%% for(var i=0,l=casesList.length;i<l;i++){ %>
-                <li class="case-list-item" style="background-image: url('<%%= casesList[i].titlePic %>');" >
-                    <a href="/case/<%%= casesList[i]._id %>" target="__blank">
+                <%% for(var i=0,l=indexCaseList.length;i<l;i++){ %>
+                <li class="case-list-item" style="background-image: url('<%%= indexCaseList[i].titlePic %>');" >
+                    <a href="/case/<%%= indexCaseList[i]._id %>">
                         <div class="case-content-wrap">
                             <div class="case-content">
-                                <i class="icon" style="background-image: url('<%%= casesList[i].indexIcon %>');" ></i>
-                                <h4 class="overflowOne"><%%= casesList[i].title %></h4>
-                                <p class="clampLine_6"><%%= casesList[i].subTitle %></p>
+                                <i class="icon" style="background-image: url('<%%= indexCaseList[i].indexIcon %>');" ></i>
+                                <h4 class="overflowOne"><%%= indexCaseList[i].title %></h4>
+                                <%%- indexCaseList[i].subTitle %>
                             </div>  
                             </div>
                     </a>
@@ -92,7 +92,7 @@
             </h5>
             <div class="new-list-box">
                 <%% for(var i=0,l=newsList.length;i<l;i++){ %>
-                <a target="__blank" href="/news/<%%= newsList[i]._id %>" >
+                <a  href="/news/<%%= newsList[i]._id %>" >
                 <div class="new-list-item">
                     <div class="item-img">
                         <img src="<%%= newsList[i].titlePic %>" alt="汉成科技新闻图片">
@@ -104,9 +104,12 @@
                             <i class="icon clock-icon"></i>
                             <span><%%= newsList[i].time %></span>
                         </p>
-                        <p class="info clamp_3">
+                        <div class="info">
+                            <p class="clamp_3"><%%= newsList[i].subTitle %></p>
+                        </div>
+                        <!-- <p class="info clamp_3">
                             <%%= newsList[i].subTitle %>
-                        </p>
+                        </p> -->
                     </div>
                 </div>
             </a>

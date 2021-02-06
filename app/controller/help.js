@@ -26,6 +26,7 @@ class HelpsController extends Controller {
       query: {
         type: "string",
         max: 20,
+        allowEmpty:true
       },
     },ctx.query);
     const { currentPage = 1, query = '' } = ctx.query;

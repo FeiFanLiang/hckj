@@ -7,8 +7,10 @@
     "declarations": true
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "await-stream-ready": "^1.0.1",
     "axios": "^0.20.0",
+    "babel-polyfill": "^6.26.0",
     "clamp-js": "^0.7.0",
     "develop": "^1.0.0",
     "egg": "^2.15.1",
@@ -74,8 +76,8 @@
     "clear": "rimraf app/public/**/* app/view/**/*",
     "deploy": "npm run build && npm run stop && npm start",
     "build": "npm run clear && cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js",
-    "start": "cross-env NODE_ENV=production egg-scripts start --daemon --title=egg-server-example",
-    "stop": "egg-scripts stop --title=egg-server-example",
+    "start": "cross-env NODE_ENV=production egg-scripts start --daemon --title=egg-hckj-server",
+    "stop": "egg-scripts stop --title=egg-hckj-server",
     "dev": "cross-env NODE_ENV=development egg-bin dev",
     "debug": "cross-env NODE_ENV=development egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",

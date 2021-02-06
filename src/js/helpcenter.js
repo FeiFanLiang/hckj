@@ -1,6 +1,7 @@
 import axios from "axios";
 import $ from "jquery";
 import './common.js';
+import 'babel-polyfill';
 // styles
 import "../less/helpcenter.less";
 
@@ -107,43 +108,41 @@ $(document).ready(function(){
   $("#search_btn").on("click", function (e) {
     e.preventDefault();
     let value = $("#search").val();
-    if (value) {
-      $.ajax({
-        url: "/api/searchHelp",
-        dataType: "json",
-        data: {
-          query: value,
-        },
-        success: (res) => {
-          if (res.code && res.code === 200) {
-            if (res.data.docs.length === 0) {
-              $(".no-msg").fadeIn(300);
-              setTimeout(() => {
-                $(".no-msg").fadeOut(300);
-              }, 2000);
-            } else {
-              var list = res.data.docs.reduce((total, current) => {
-                total += `<li>
-                  <a href="/help/${current._id}">
-                      <div class="list-item">
-                          <span class="overflowOne">${current.title}</span>
-                          <span class="time">
-                              ${current.time}
-                          </span>
-                      </div>
-                  </a>
-              </li>`;
-                return total;
-              }, "");
-              $(".help-list").empty();
-              $(".help-list").append(list);
-              setUrl(value, res.data.page);
-              getPage(res.data, res.data.page, value);
-            }
+    $.ajax({
+      url: "/api/searchHelp",
+      dataType: "json",
+      data: {
+        query: value,
+      },
+      success: (res) => {
+        if (res.code && res.code === 200) {
+          if (res.data.docs.length === 0) {
+            $(".no-msg").fadeIn(300);
+            setTimeout(() => {
+              $(".no-msg").fadeOut(300);
+            }, 2000);
+          } else {
+            var list = res.data.docs.reduce((total, current) => {
+              total += `<li>
+                <a href="/help/${current._id}">
+                    <div class="list-item">
+                        <span class="overflowOne">${current.title}</span>
+                        <span class="time">
+                            ${current.time}
+                        </span>
+                    </div>
+                </a>
+            </li>`;
+              return total;
+            }, "");
+            $(".help-list").empty();
+            $(".help-list").append(list);
+            setUrl(value, res.data.page);
+            getPage(res.data, res.data.page, value);
           }
-        },
-      });
-    }
+        }
+      },
+    });
   });
 })
 

@@ -10,8 +10,12 @@
         height: 120px;
         align-items: center;
         margin-right: 30px;
-        background-color: #fff;
         font-size: 20px;
+        background: url('../static/imgs/s-item.jpg') no-repeat;
+        background-size: cover;
+        &:hover {
+            background-image: url('../static/imgs/s-item-onfocus.jpg');
+        }  
     }
     &>div:nth-child(3n+0){
         margin-right: 0;
@@ -70,6 +74,10 @@
     background: url('../static/imgs/server-bg.jpg') no-repeat;
     background-size: cover;
     color: #fff;
+    padding: 60px 0 100px;
+    h5 {
+        margin-bottom: 100px;
+    }
     .produce-content {
         img {
             display: block;

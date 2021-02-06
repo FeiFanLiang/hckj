@@ -38,9 +38,12 @@ class NewController extends Controller {
         },
         indexShow:{
             type:"boolean"
+        },
+        time:{
+            type:'date'
         }
       })
-      const {id,title,subTitle,type,titlePic,content,indexShow} = ctx.request.body;
+      const {id,title,subTitle,type,titlePic,content,indexShow,time} = ctx.request.body;
       if(id){
         await app.model.News.updateOne({
             _id:app.__mongoose.Types.ObjectId(id)
@@ -50,11 +53,12 @@ class NewController extends Controller {
             type,
             titlePic,
             content,
-            indexShow
+            indexShow,
+            time
         });
         ctx.success('更新成功')
       }else {
-        const newFile = app.model.News({title,subTitle,type,titlePic,content,indexShow});
+        const newFile = app.model.News({title,subTitle,type,titlePic,content,indexShow,time});
         await newFile.save();
         ctx.success('添加成功',{
             id:newFile.id,
@@ -64,7 +68,7 @@ class NewController extends Controller {
             titlePic,
             content,
             indexShow,
-            time:newFile.time
+            time:time
         })
       }
       

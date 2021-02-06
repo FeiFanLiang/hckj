@@ -3,7 +3,7 @@
 
 .bus-section {
   height: 865px;
-  background: url("../static/imgs/buss-bg.jpg") no-repeat;
+  background: url("../static/imgs/y-new.png") no-repeat;
   background-size: cover;
   h3 {
     color: #222222;
@@ -153,14 +153,11 @@
     }
     .case-list-item:nth-child(1) {
       background-image: url("../static/imgs/zhyq-bg.jpg");
-      .case-icon {
-        background-image: url("../static/imgs/icon_zhyq.png");
-      }
     }
     .case-content-wrap {
       height: 100%;
       padding-top: 60px;
-      background-color: rgba(255,255,255,0.29);
+      background-color: rgba(66,65,65,0.35);
       &:hover {
         background-color: rgba(11, 79, 217, 0.62);
         .case-content {
@@ -173,9 +170,10 @@
       }
       .case-content {
         transform: translateY(70px) translateZ(0); 
-        z-index: 1; 
+        z-index: 0; 
         transition: transform .6s ease;
-        .case-icon {
+
+        .icon {
           width: 60px;
           height: 60px;
         }
@@ -201,10 +199,15 @@
 
 .news-section {
   padding-bottom: 80px;
+  background: url('../static/imgs/new-1-new.png') no-repeat;
+  background-size: cover;
   .new-list-box {
     display: flex;
     width: 1200px;
     margin: 0 auto;
+    a {
+      display: block;
+    }
     a+a {
       margin-left: 40px;
     }
@@ -212,6 +215,7 @@
       position: relative;
       width: 374px;
       border: 1px solid #ebeced;
+      background-color: #fff;
       cursor: pointer;
       &:hover {
         .item-img {
@@ -250,7 +254,7 @@
         font-size: 0;
         width: 36px;
         border-bottom: 2px solid #12acfd;
-        margin-bottom: 17px;
+        margin-bottom: 15px;
       }
       .item-img {
         height: 222px;
@@ -265,10 +269,12 @@
       .new-content {
         padding: 19px 30px 30px;
         h5 {
+          font-size: 18px;
+          font-weight:700;
           width: 100%;
         }
         .time {
-          margin-bottom: 19px;
+          margin-bottom: 20px;
           font-size: 14px;
           color: #999999;
           .clock-icon {
@@ -283,7 +289,9 @@
           }
         }
         .info {
+          height: 75px;
           font-size: 14px;
+          line-height: 25px;
           color: #666666;
         }
       }

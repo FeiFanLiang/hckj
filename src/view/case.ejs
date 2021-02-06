@@ -8,17 +8,20 @@
 </head>
 <body>
     <% include includes/headerNav.ejs %>
+    <% include includes/backTop.ejs %>
     <section class="header-banner">
         <img src="../static/imgs/case-banner.jpg" alt="汉成科技典型案例图片展示">
     </section>
-    <section class="case-section">
+    <section class="case-section case-detail-section">
         <div class="case-content">
             <div class="case-img">
                 <img src="<%%= caseDetail.paragraphImg_1 %>" alt="汉成科技典型案例内容图片展示">
             </div>
             <div class="case-info">
                 <h5><%%= caseDetail.paragraphTitle_1 %></h5>
-                <p><%%= caseDetail.paragraphContent_1 %></p>
+                <div class="case-text">
+                    <%%- caseDetail.paragraphContent_1 %>
+                </div>
             </div>
         </div>
     </section>

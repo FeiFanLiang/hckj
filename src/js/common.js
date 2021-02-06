@@ -11,14 +11,14 @@ $(document).ready(function(){
     $(this).find(".iconshangla1").show();
     $(this).find(".iconDown").hide();
   });
-  [].forEach.call(document.querySelectorAll('.clampLine_6'),(node) => {
+  [].forEach.call(document.querySelectorAll('.clampLine_6'),function(node){
     $clamp(node,{clamp:6,useNativeClamp:false});
   });
-  [].forEach.call(document.querySelectorAll('.clamp_3'),(node) => {
-    $clamp(node,{clamp:4,useNativeClamp:false})
+  [].forEach.call(document.querySelectorAll('.clamp_3'),function(node){
+    $clamp(node,{clamp:3,useNativeClamp:false})
   });
-  [].forEach.call(document.querySelectorAll('.clamp_2'),(node) => {
-    $clamp(node,{clamp:2,useNativeClamp:false})
+  [].forEach.call(document.querySelectorAll('.clamp_2'),function(node){
+    $clamp(node,{clamp:'49px',useNativeClamp:false})
   })
   Math.easeout = function (A, B, rate, callback) {
     if (A == B || typeof A != "number") {

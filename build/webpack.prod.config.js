@@ -11,6 +11,7 @@ const CONFIG = require('./config.prod');
 const webpackBaseConfig = require('./webpack.base.config');
 
 module.exports = webpackMerge(webpackBaseConfig, {
+  devtool:'none',
   module: {
     rules: [
       {
@@ -88,8 +89,6 @@ module.exports = webpackMerge(webpackBaseConfig, {
       name: 'manifest',
     },
   },
-
-  devtool: 'cheap-module-source-map',
 
   mode: 'production',
 });

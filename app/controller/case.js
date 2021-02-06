@@ -9,7 +9,9 @@ class CaseController extends Controller {
       {
         limit: pageSize,
         page: currentPage,
-        lean: true,
+        lean: {
+          getters:true
+        },
         leanWidthId: true,
         select: "-__v",
         sort: {
@@ -32,6 +34,9 @@ class CaseController extends Controller {
         type: "string",
         max:20
       },
+      indexShow:{
+        type:"boolean"
+      },
       titlePic: {
         type: "string",
       },
@@ -40,8 +45,7 @@ class CaseController extends Controller {
         max:10
       },
       subTitle: {
-        type: "string",
-        max:50
+        type: "string"
       },
       indexIcon:{
         type:'string'
@@ -52,8 +56,7 @@ class CaseController extends Controller {
       },
       paragraphContent_1: {
         type: "string",
-        allowEmpty:true,
-        max:500
+        allowEmpty:true
       },
       paragraphImg_1: {
         type: "string",
@@ -100,11 +103,18 @@ class CaseController extends Controller {
       titlePic,
       subTitle,
       navTitle,
+      indexShow,
       paragraphTitle_1,
       paragraphContent_1,
       paragraphImg_1,
       paragraphTitle_2,
       paragraphContent_2,
+      paragraphContent2Img_1,
+      paragraphContent2ImgTitle_3,
+      paragraphContent2Img_3,
+      paragraphContent2ImgTitle_2,
+      paragraphContent2Img_2,
+      paragraphContent2ImgTitle_1,
       img_1,
       img_2,
       indexIcon,
@@ -119,12 +129,19 @@ class CaseController extends Controller {
           title,
           titlePic,
           navTitle,
+          indexShow,
           subTitle,
           paragraphTitle_1,
           paragraphContent_1,
           paragraphImg_1,
           paragraphTitle_2,
           paragraphContent_2,
+          paragraphContent2Img_1,
+          paragraphContent2ImgTitle_3,
+          paragraphContent2Img_3,
+          paragraphContent2ImgTitle_2,
+          paragraphContent2Img_2,
+          paragraphContent2ImgTitle_1,
           img_1,
           img_2,
           indexIcon
@@ -137,6 +154,7 @@ class CaseController extends Controller {
         titlePic,
         subTitle,
         navTitle,
+        indexShow,
         paragraphTitle_1,
         paragraphContent_1,
         paragraphImg_1,
@@ -144,6 +162,12 @@ class CaseController extends Controller {
         paragraphContent_2,
         img_1,
         img_2,
+        indexIcon,
+        paragraphContent2Img_1,
+        paragraphContent2ImgTitle_3,
+        paragraphContent2ImgTitle_2,
+        paragraphContent2Img_2,
+        paragraphContent2ImgTitle_1
       });
       await newCase.save();
       ctx.success("添加成功", {
@@ -151,10 +175,16 @@ class CaseController extends Controller {
         title,
         titlePic,
         navTitle,
+        indexShow,
         subTitle,
         paragraphTitle_1,
         paragraphContent_1,
         paragraphImg_1,
+        paragraphContent2ImgTitle_3,
+        paragraphContent2ImgTitle_2,
+        paragraphContent2Img_2,
+        paragraphContent2Img_1,
+        paragraphContent2ImgTitle_1,
         paragraphTitle_2,
         paragraphContent_2,
         img_1,

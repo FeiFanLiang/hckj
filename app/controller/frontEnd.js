@@ -4,9 +4,10 @@ const { render } = require('../utils/utils.js');
 class HomeController extends Controller {
   async indexPage() {
     const { ctx,app } = this;
-    const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).limit(5).lean({getters:true});
+    const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle indexIcon').sort({time:-1}).lean({getters:true});
+    const indexCaseList = await app.model.Case.find({indexShow:true}).select('_id title titlePic subTitle navTitle indexIcon').sort({time:-1}).limit(5).lean({getters:true});
     const newsList = await app.model.News.find({indexShow:true}).select('_id title subTitle titlePic time').sort({time:-1}).limit(3).lean({getters:true});
-    await render(ctx, 'homeIndex.ejs',{casesList,newsList,index:1} );
+    await render(ctx, 'homeIndex.ejs',{casesList,newsList,index:1,indexCaseList} );
     // ctx.render('home.ejs', { title: '首页' });
   }
   async notFound(){
@@ -27,12 +28,12 @@ class HomeController extends Controller {
       await ctx.notFound();
       return
     }
-    const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).limit(5).lean({getters:true});
+    const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).lean({getters:true});
     await render(ctx,'case.ejs',{casesList,index:2,caseDetail});
   }
   async aboutPage(){
     const {ctx,app} = this;
-    const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).limit(5).lean({getters:true});
+    const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).lean({getters:true});
     await render(ctx,'aboutus.ejs',{casesList,index:6});
   }
   async newsPage(){
@@ -75,7 +76,7 @@ class HomeController extends Controller {
            active:startPage+index  == page ? 'active' : ''
         }
       })
-      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).limit(5).lean({getters:true});
+      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).lean({getters:true});
       await render(ctx,'news.ejs',{casesList,newsList:newsList.docs,index:4,type,page,pageArray,hasNextPage,hasPrevPage,pagingCounter:totalPages})
   }
   async newsDetailPage(){
@@ -108,7 +109,7 @@ class HomeController extends Controller {
         '$gt':newsDetail._id
       }}).sort({_id:1});
       page = Math.floor((currentPage / 10)+1);
-      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).limit(5).lean({getters:true});
+      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).lean({getters:true});
       await render(ctx,'newsDetail.ejs',{casesList,index:4,newsDetail,last_id:last?last.id : null,next_id:next?next.id : null,page:page || 1})
     }else {
       await ctx.notFound();
@@ -117,7 +118,7 @@ class HomeController extends Controller {
   }
   async serverPage(){
       const {ctx,app} = this;
-      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).limit(5).lean({getters:true});
+      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).lean({getters:true});
       await render(ctx,'server.ejs',{casesList,index:3})
   }
   async helpCenterPage(){
@@ -157,7 +158,7 @@ class HomeController extends Controller {
            active:startPage+index  == page ? 'active' : ''
         }
       })
-      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).limit(5).lean({getters:true});
+      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).lean({getters:true});
       await render(ctx,'helpcenter.ejs',{casesList,index:5,helpList:helpList.docs,hasNextPage,hasPrevPage,pageArray,query,pagingCounter:totalPages,page})
   }
   async helpDetailPage(){
@@ -213,7 +214,7 @@ class HomeController extends Controller {
         '$gt':helpDetail._id
       }}).sort({_id:1});
       page = Math.floor((currentPage / 10)+1);
-      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).limit(5).lean({getters:true});
+      const casesList = await app.model.Case.find({}).select('_id title titlePic subTitle navTitle').sort({time:-1}).lean({getters:true});
       await render(ctx,'helpDetail.ejs',{casesList,index:5,helpDetail,last_id:last?last.id : null,next_id:next?next.id : null,page,query})
     }else {
       await ctx.notFound();

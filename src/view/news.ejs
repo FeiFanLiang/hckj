@@ -8,6 +8,7 @@
 </head>
 <body>
     <% include includes/headerNav.ejs %>
+    <% include includes/backTop.ejs %>
     <section class="header-banner">
         <img src="../static/imgs/news-banner.jpg" alt="">
     </section>
@@ -36,9 +37,9 @@
                                 <h5 class="overflowOne">
                                     <%%= newsList[i].title %>
                                 </h5>
-                                <p class="clamp_2">
-                                    <%%= newsList[i].subTitle %>
-                                </p>
+                                <div>
+                                    <p class="clamp_2"><%%= newsList[i].subTitle %></p>
+                                </div>
                                 <span class="news-time">
                                     <i class="icon icon-clock"></i>
                                     <span>
